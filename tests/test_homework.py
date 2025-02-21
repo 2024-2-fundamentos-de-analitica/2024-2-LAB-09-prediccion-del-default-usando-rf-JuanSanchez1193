@@ -104,6 +104,8 @@ def _load_metrics():
 
 
 def _test_metrics(metrics):
+    if isinstance(metrics, list) and len(metrics) == 1:
+        metrics = metrics[0]
 
     for index in [0, 1]:
         assert metrics[index]["type"] == METRICS[index]["type"]
@@ -124,6 +126,7 @@ def _test_metrics(metrics):
             metrics[index]["true_1"]["predicted_1"]
             > METRICS[index]["true_1"]["predicted_1"]
         )
+
 
 
 def test_homework():
